@@ -43,10 +43,10 @@ void showList(list &lst, void(funcPrint)(Pokemon)) {
     }
 }
 
-node *get(list &lst, uint32 position) {
+node *getByPosition(list &lst, uint32 position) { // Função privada para o usuário
     if (isEmpty(lst) || position > lst.count - 1) {
         cout << "Nenhum monstro visto ou capturado ainda" << "\n";
-        return NULL;
+        throw exception();
     }
     node *aux = lst.head;
     for (int i = 0; i < position; i++)
@@ -61,7 +61,7 @@ void remove(list &lst, uint32 position) {
         return;
     }
 
-    node *aux = get(lst, position);
+    node *aux = getByPosition(lst, position);
     if (aux->next != NULL) {
         aux->next->prev = aux->prev;
     } else {
@@ -78,58 +78,40 @@ void remove(list &lst, uint32 position) {
     lst.count--;
 }
 
-void swapNode(list &lst, uint32 positionA, uint32 positionB) {
-    node *aux1 = get(lst, positionA);
-    node *aux2 = get(lst, positionB);
+void swapNode(list &lst, uint32 positionA, uint32 positionB) { // Função privada para o usuário
+    node *aux1 = getByPosition(lst, positionA);
+    node *aux2 = getByPosition(lst, positionB);
     Pokemon temp = aux1->data;
     aux1->data = aux2->data;
     aux2->data = temp;
 }
 
-void quickSort(list &lst, uint32 begin, uint32 end, int(*funcComp)(Pokemon, Pokemon)) {
+void quickSort(list &lst, int begin, int end, int (*funcComp)(Pokemon, Pokemon)) {
     if (begin < end) {
-        int  i = begin, j = end;
-        int center = (begin + (end - begin))/2;
-        node *pivot = get(lst, center); // Para esse quick sort, o meio será sempre o escolhido como o pivot  
+        int i = begin, j = end;
+        int center = (begin + end) / 2; //Nesse quickSort foi debatido que o centro será sempre o pivot
+        Pokemon pivotData = getByPosition(lst, center)->data;
 
         while (i <= j) {
-
-            while (funcComp(get(lst, i)->data, pivot->data) < 0) {
+            while (funcComp(getByPosition(lst, i)->data, pivotData) < 0) {
                 i++;
-            } 
-            while (funcComp(get(lst, j)->data, pivot->data) > 0) {
+            }
+            while (funcComp(getByPosition(lst, j)->data, pivotData) > 0) {
                 j--;
-            } 
+            }
             if (i <= j) {
                 swapNode(lst, i, j);
                 i++;
                 j--;
             }
         }
-        if (begin < j)
+
+        if (begin < j) 
             quickSort(lst, begin, j, funcComp);
-        if (i < end) 
+        
+        if (i < end)
             quickSort(lst, i, end, funcComp);
+        
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

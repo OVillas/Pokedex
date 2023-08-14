@@ -9,7 +9,7 @@ const std::string FILE_NAME = "data/pokemonData.csv";
 int main(int argc, char **argv) {
     list pokemons;
     readPokemonsCSV(FILE_NAME, pokemons);
-    quickSort(pokemons, 0, 9, comparePokemonID);
+    quickSort(pokemons, 0, pokemons.count - 1, comparePokemonName);
     showList(pokemons, printPokemon);
     cleanList(pokemons);
     return 0;

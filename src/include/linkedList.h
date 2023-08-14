@@ -21,7 +21,5 @@ bool isEmpty(list &lst);
 void add(list &lst, Pokemon data);
 void cleanList(list &lst);
 void showList(list &lst, void(*funcPrint)(Pokemon));
-node *get(list &lst, uint32 position);
-void swapNode(list &lst, uint32 positionA, uint32 positionB);
-void quickSort(list &lst, uint32 begin, uint32 end, int(*funcComp)(Pokemon, Pokemon));
+void quickSort(list &lst, int begin, int end, int (*funcComp)(Pokemon, Pokemon));
 #endif
