@@ -18,7 +18,8 @@ struct list {
 };
 
 bool isEmpty(list &lst);
-void add(list &lst, Pokemon data);
+void append(list &lst, Pokemon data);
+void createPokemon(list &lst, Pokemon pokemon);
 void cleanList(list &lst);
 void showList(list &lst, void(*funcPrint)(Pokemon));
 void quickSort(list &lst, int begin, int end, int (*funcComp)(Pokemon, Pokemon));

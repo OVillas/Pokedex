@@ -30,7 +30,7 @@ void readPokemonsCSV(string filename, list &lst) {
         getline(ss, field, ';');
         pokemon.gen = stoi(field);
 
-        add(lst, pokemon);
+        append(lst, pokemon);
     }
 
 

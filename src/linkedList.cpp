@@ -8,7 +8,7 @@ bool isEmpty(list &lst) {
     return lst.count == 0;
 }
 
-void add(list &lst, Pokemon data) {
+void append(list &lst, Pokemon data) {
     node *newNode = new node;
     newNode->data = data;
 
@@ -32,7 +32,7 @@ void cleanList(list &lst) {
         lst.count--;
     }
     lst.head = lst.tail = nullptr;
-    cout << "Memoria limpa com sucesso" << "\n";
+    cout << "Lista limpa com sucesso" << "\n";
 }
 
 void showList(list &lst, void(funcPrint)(Pokemon)) {
@@ -43,10 +43,11 @@ void showList(list &lst, void(funcPrint)(Pokemon)) {
     }
 }
 
-node *getByPosition(list &lst, uint32 position) { // Função privada para o usuário
+// PRIVADA Função auxiliar para o algoritmo de ordenação quickSort
+node *getNodeByPosition(list &lst, uint32 position) { 
     if (isEmpty(lst) || position > lst.count - 1) {
         cout << "Nenhum monstro visto ou capturado ainda" << "\n";
-        throw exception();
+        return NULL;
     }
     node *aux = lst.head;
     for (int i = 0; i < position; i++)
@@ -55,13 +56,48 @@ node *getByPosition(list &lst, uint32 position) { // Função privada para o usu
     return aux;
 }
 
+//PRIVADA Função auxiliar para a inserção de um novo pokemon
+node *getNodeByName(list &lst, string pokemonName) { 
+    if (isEmpty(lst)) {
+        cout << "Nenhum monstro visto ou capturado ainda" << "\n";
+        return NULL;
+    }
+    node *aux = lst.head;
+    for (int i = 0; i < lst.count; i++) {
+        if (aux->data.name == pokemonName) 
+            return aux;
+        aux = aux->next;
+    }
+
+    cout << "\n\nNenhum POKEMON encontrado com esse nome\n\n";
+
+    return NULL;
+}
+
+//PRIVADA Função auxiliar para a inserção de um novo pokemon
+node *getNodeByID(list &lst, int pokemonID) { 
+    if (isEmpty(lst)) {
+        cout << "Nenhum monstro visto ou capturado ainda" << "\n";
+        return NULL;
+    }
+    node *aux = lst.head;
+    for (int i = 0; i < lst.count; i++) {
+        if (aux->data.ID == pokemonID) 
+            return aux;
+        aux = aux->next;
+    }
+    cout << "\n\nNenhum POKEMON encontrado com esse ID\n\n";
+
+    return NULL;
+}
+
 void remove(list &lst, uint32 position) {
     if (isEmpty(lst) || position > lst.count) {
         cout << "Nenhum monstro visto ou capturado ainda para remover" << "\n";
         return;
     }
 
-    node *aux = getByPosition(lst, position);
+    node *aux = getNodeByPosition(lst, position);
     if (aux->next != NULL) {
         aux->next->prev = aux->prev;
     } else {
@@ -78,9 +114,10 @@ void remove(list &lst, uint32 position) {
     lst.count--;
 }
 
-void swapNode(list &lst, uint32 positionA, uint32 positionB) { // Função privada para o usuário
-    node *aux1 = getByPosition(lst, positionA);
-    node *aux2 = getByPosition(lst, positionB);
+//PRIVADA
+void swapNode(list &lst, uint32 positionA, uint32 positionB) { 
+    node *aux1 = getNodeByPosition(lst, positionA);
+    node *aux2 = getNodeByPosition(lst, positionB);
     Pokemon temp = aux1->data;
     aux1->data = aux2->data;
     aux2->data = temp;
@@ -90,13 +127,14 @@ void quickSort(list &lst, int begin, int end, int (*funcComp)(Pokemon, Pokemon))
     if (begin < end) {
         int i = begin, j = end;
         int center = (begin + end) / 2; //Nesse quickSort foi debatido que o centro será sempre o pivot
-        Pokemon pivotData = getByPosition(lst, center)->data;
+        Pokemon pivotData = getNodeByPosition(lst, center)->data;
 
         while (i <= j) {
-            while (funcComp(getByPosition(lst, i)->data, pivotData) < 0) {
+            
+            while (funcComp(getNodeByPosition(lst, i)->data, pivotData) < 0) {
                 i++;
             }
-            while (funcComp(getByPosition(lst, j)->data, pivotData) > 0) {
+            while (funcComp(getNodeByPosition(lst, j)->data, pivotData) > 0) {
                 j--;
             }
             if (i <= j) {
@@ -111,7 +149,24 @@ void quickSort(list &lst, int begin, int end, int (*funcComp)(Pokemon, Pokemon))
         
         if (i < end)
             quickSort(lst, i, end, funcComp);
-        
     }
 }
 
+void createPokemon(list &lst, Pokemon pokemon) {
+    node *aux;
+    
+    aux = getNodeByID(lst, pokemon.ID);
+    if (aux != NULL) {
+        cout << "Pokemon já adcionado na sua Pokedex" << "\n";
+        return;
+    }
+
+    aux = getNodeByName(lst, pokemon.name);
+    if (aux != NULL) {
+        cout << "Pokemon já adcionado na sua Pokedex" << "\n";
+        return;
+    }
+
+    append(lst, pokemon);
+    cout << "Pokemon registrado com sucesso" << "\n";
+}
