@@ -15,7 +15,7 @@ arquivo .CSV em uma lista duplamente encadeada.
     1 - Utilização de lista duplamente encadeadas ;
     2 - Possibilidade de Criar, Ler, atualizar, deletar e organizar por nome ou ID por meio do sistema de QUICKSORT os monstrinhos de bolso;
     
-#Implementação da lista duplamente encadeada
+# Implementação da lista duplamente encadeada
 ![](https://github.com/Villlas/Pokedex/blob/main/img/lista_Duplamente_Encadeada.png)
 
 # TUTORIAL 
