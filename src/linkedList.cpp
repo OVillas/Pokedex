@@ -69,8 +69,6 @@ node *getNodeByName(list &lst, string pokemonName) {
         aux = aux->next;
     }
 
-    cout << "\n\nNenhum POKEMON encontrado com esse nome\n\n";
-
     return NULL;
 }
 
@@ -86,7 +84,6 @@ node *getNodeByID(list &lst, int pokemonID) {
             return aux;
         aux = aux->next;
     }
-    cout << "\n\nNenhum POKEMON encontrado com esse ID\n\n";
 
     return NULL;
 }
