@@ -18,7 +18,11 @@ arquivo .CSV em uma lista duplamente encadeada.
     
 # Implementação da lista duplamente encadeada
 ![](https://github.com/Villlas/Pokedex/blob/main/img/lista_Duplamente_Encadeada.png)
-
+***Explicação:***
+-> A cada Node nessa implementação de uma lista duplamente encadeada, serão armazenados um DATA que será 
+   do tipo Pokemon (struct em src/include/pokemon.h), e os ponteiros para o node next(próximo) e node prev(anterior).
+-> A lista se inicia com um node chamado de HEAD, o qual o NEXT apontado para os próximos nodes e o PREV recebe NULL justamente para
+   simbolizar o inicio da lista. e finaliza com um node chamado TAIL com o seu NEXT recebeendo NULL para demonstrar o final da lista.
 
 # MENU PRINCIPAL
 ![](https://github.com/Villlas/Pokedex/blob/main/img/print_menu.png) 
