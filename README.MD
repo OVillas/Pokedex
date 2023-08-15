@@ -19,6 +19,10 @@ arquivo .CSV em uma lista duplamente encadeada.
 # Implementação da lista duplamente encadeada
 ![](https://github.com/Villlas/Pokedex/blob/main/img/lista_Duplamente_Encadeada.png)
 
+
+# MENU PRINCIPAL
+![](https://github.com/Villlas/Pokedex/blob/main/img/print_menu.png) 
+
 # TUTORIAL 
     1 - linux:
         1.1 - instale o gcc com: 
