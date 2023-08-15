@@ -4,6 +4,7 @@
 #include <string>
 #include "include/linkedList.h"
 #include "include/pokemon.h"
+#include "include/pokemonUtils.h"
 
 using namespace std;
 
@@ -11,7 +12,7 @@ void readPokemonsCSV(string filename, list &lst) {
     ifstream fileDatas(filename);
 
     if (!fileDatas.is_open()) {
-        cout << "Erro ao abrir o arquivo csv" << "\n";
+        cout << "Erro ao abrir o arquivo CSV" << "\n";
         return;
     }
 
@@ -33,5 +34,24 @@ void readPokemonsCSV(string filename, list &lst) {
         append(lst, pokemon);
     }
 
+    fileDatas.close();
+}
 
+void writePokemonCSV(string filename, list &lst) {
+    ofstream fileDatas(filename);
+
+    if (!fileDatas.is_open()) {
+        cout << "Erro ao abrir o arquivo CSV" << "\n";
+        return;
+    }
+
+    node *aux = lst.head;
+    for (int i = 0; i < lst.count; i++) {
+        string line = splitPokemon(aux->data);
+        fileDatas << line << "\n";
+        aux = aux->next;
+    }
+
+
+    fileDatas.close();
 }

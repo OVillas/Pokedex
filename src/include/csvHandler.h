@@ -6,5 +6,6 @@
 
 
 void readPokemonsCSV(std::string filename, list &lst);
+void writePokemonCSV(std::string filename, list &lst);
 
 #endif 

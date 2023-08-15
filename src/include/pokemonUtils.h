@@ -13,4 +13,6 @@ int comparePokemonName(Pokemon pokemonA, Pokemon pokemonB);
  
 Pokemon readNewPokemon();
 
+std::string splitPokemon(Pokemon pokemon);
+
 #endif

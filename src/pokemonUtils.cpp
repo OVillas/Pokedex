@@ -42,3 +42,7 @@ Pokemon readNewPokemon() {
     readInterger(pokemon.gen);
     return pokemon;
 }
+
+std::string splitPokemon(Pokemon pokemon) {
+    return std::to_string(pokemon.ID) + ";" + pokemon.name + ";" + pokemon.type + ";" + std::to_string(pokemon.gen);
+}
