@@ -15,4 +15,8 @@ Pokemon readNewPokemon();
 
 std::string splitPokemon(Pokemon pokemon);
 
+void showPokemonTitle();
+
+void exitToPokemonTitle();
+
 #endif

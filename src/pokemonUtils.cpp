@@ -46,3 +46,34 @@ Pokemon readNewPokemon() {
 std::string splitPokemon(Pokemon pokemon) {
     return std::to_string(pokemon.ID) + ";" + pokemon.name + ";" + pokemon.type + ";" + std::to_string(pokemon.gen);
 }
+
+void showPokemonTitle() {
+    std::cout << "______________________________________________________________________________________________" << "\n\n";
+    std::cout << "⠀⠀⠀     ⢀⣀⣀⣀⣀⣀⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀                                  ,'\\" << std::endl;
+    std::cout << "⠀⠀⠀⠀⠀⣀⣀⣀⣸⣿⣿⣿⣿⣿⣿⣿⣿⣀⣀⣀⡀⠀⠀⠀⠀   _.----.        ____         ,'  _\\   ___    ___     ____" << std::endl;
+    std::cout << "⠀⠀⢀⣀⣀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣇⣀⣀⠀⠀_,-'       `.     |    |  /`.   \\,-'    |   \\  /   |   |    \\  |`." << std::endl;
+    std::cout << "⠀⠀⢸⣿⣿⣿⣿⣿⣿⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀\\      __    \\    '-.  | /   `.  ___    |    \\/    |   '-.   \\ |  |" << std::endl;
+    std::cout << "⢀⣀⣸⣿⣿⣿⣿⣀⣀⠀⢀⣀⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣀⣀ \\.    \\ \\   |  __  |  |/    ,','_  `.  |          | __  |    \\|  |" << std::endl;
+    std::cout << "⢸⣿⣿⣿⣿⣿⣿⣿⣿⣀⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿   \\    \\/   /,' _`.|      ,' / / / /   |          ,' _`.|     |  |" << std::endl;
+    std::cout << "⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿    \\     ,-'/  /   \\    ,'   | \\/ / ,`.|         /  /   \\  |     |" << std::endl;
+    std::cout << "⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿     \\    \\ |   \\_/  |   `-.  \\    `'  /|  |    ||   \\_/  | |\\    |" << std::endl;
+    std::cout << "⢸⣿⣿⣀⣀⣿⣿⣿⣿⣿⣇⣀⣀⣀⣸⣿⣿⣿⣿⣿⣇⣀⣿⣿⣿      \\    \\ \\      /       `-.`.___,-' |  |\\  /| \\      /  | |   |" << std::endl;
+    std::cout << "⠀⠀⢸⣿⣿⡇⠀⠀⠀⠀⢸⣿⣿⣿⣿⠀⠀⠀⠀⠀⣿⣿⣿⠀⠀       \\    \\ `.__,'|  |`-._    `|      |__| \\/ |  `.__,'|  | |   |" << std::endl;
+    std::cout << "⠀⠀⠸⠿⢿⣃⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⣀⡿⠿⠿⠀⠀        \\_.-'       |__|    `-._ |              '-.|     '-.| |   |" << std::endl;
+    std::cout << "⠀⠀⠀⠀⠀⣿⣿⣿⣿⣀⣀⣀⣀⣀⣀⣀⣸⣿⣿⣿⡇⠀⠀⠀⠀                                `'                            '-._|" << std::endl;
+    std::cout << "⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀" << std::endl;
+
+    std::cout << "______________________________________________________________________________________________" << "\n";
+
+    std::cout << "\n[ 1 ] Criar Pokemon" << "\n";
+    std::cout << "[ 2 ] Mostrar Pokemons vistos" << "\n";
+    std::cout << "[ 3 ] Atualizar dados de pokemons vistos" << "\n";
+    std::cout << "[ 4 ] Deletar pokemon " << "\n";
+    std::cout << "[ q ] Sair da pokedex " << "\n";
+}
+
+void exitToPokemonTitle() {
+    std::cin.ignore();
+    std::cout << "\nTecle ENTER para voltar ao menu...";
+    std::cin.get();
+}
