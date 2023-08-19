@@ -5,7 +5,7 @@ void printPokemon(Pokemon pokemon) {
     std::cout << "ID: " << pokemon.ID << "\n";
     std::cout << "name: " << pokemon.name << "\n";
     std::cout << "type: " << pokemon.type << "\n";
-    std::cout << "gen: " << pokemon.gen << "\n\n";
+    std::cout << "gen: " << pokemon.gen << "º geração" <<  "\n\n";
 }
 
 int comparePokemonID(Pokemon pokemonA, Pokemon pokemonB) {
@@ -47,7 +47,7 @@ std::string splitPokemon(Pokemon pokemon) {
     return std::to_string(pokemon.ID) + ";" + pokemon.name + ";" + pokemon.type + ";" + std::to_string(pokemon.gen);
 }
 
-void showPokemonTitle() {
+void showPokemonTitle(bool showMenu) {
     std::cout << "______________________________________________________________________________________________" << "\n\n";
     std::cout << "⠀⠀⠀     ⢀⣀⣀⣀⣀⣀⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀                                  ,'\\" << std::endl;
     std::cout << "⠀⠀⠀⠀⠀⣀⣀⣀⣸⣿⣿⣿⣿⣿⣿⣿⣿⣀⣀⣀⡀⠀⠀⠀⠀   _.----.        ____         ,'  _\\   ___    ___     ____" << std::endl;
@@ -65,15 +65,22 @@ void showPokemonTitle() {
 
     std::cout << "______________________________________________________________________________________________" << "\n";
 
-    std::cout << "\n[ 1 ] Criar Pokemon" << "\n";
-    std::cout << "[ 2 ] Mostrar Pokemons vistos" << "\n";
-    std::cout << "[ 3 ] Atualizar dados de pokemons vistos" << "\n";
-    std::cout << "[ 4 ] Deletar pokemon " << "\n";
-    std::cout << "[ q ] Sair da pokedex " << "\n";
+    if (showMenu) {
+        std::cout << "\n[ 1 ] Criar Pokemon" << "\n";
+        std::cout << "[ 2 ] Mostrar Pokemons vistos" << "\n";
+        std::cout << "[ 3 ] Atualizar dados de pokemons vistos" << "\n";
+        std::cout << "[ 4 ] Deletar pokemon " << "\n";
+        std::cout << "[ q ] Sair da pokedex " << "\n";
+    }
+    
 }
 
 void exitToPokemonTitle() {
     std::cin.ignore();
     std::cout << "\nTecle ENTER para voltar ao menu...";
     std::cin.get();
+}
+
+void printOnlyPokemonName(Pokemon pokemon) {
+    std::cout << " " << pokemon.name << "\n";
 }

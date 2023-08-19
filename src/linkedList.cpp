@@ -1,5 +1,6 @@
 #include "include/linkedList.h"
 #include "include/pokemon.h"
+#include "include/pokemonUtils.h"
 #include <iostream>
 
 using namespace std;
@@ -35,9 +36,11 @@ void cleanList(list &lst) {
     cout << "Lista limpa com sucesso" << "\n";
 }
 
-void showList(list &lst, void(funcPrint)(Pokemon)) {
+void displayList(list &lst, void(funcPrint)(Pokemon), bool showPosition) {
     node *aux = lst.head;
+    int i = 0;
     while (aux != NULL) {
+        if (showPosition) cout << "[ " << i++ << " ]"; 
         funcPrint(aux->data);
         aux = aux->next;
     }
@@ -57,14 +60,16 @@ node *getNodeByPosition(list &lst, uint32 position) {
 }
 
 //PRIVADA Função auxiliar para a inserção de um novo pokemon
-node *getNodeByName(list &lst, string pokemonName) { 
+node *getNodeByName(list &lst, Pokemon pokemon, int (*funcComp)(Pokemon, Pokemon)) { 
     if (isEmpty(lst)) {
         cout << "Nenhum monstro visto ou capturado ainda" << "\n";
         return NULL;
     }
+    Pokemon temp;
+    
     node *aux = lst.head;
     for (int i = 0; i < lst.count; i++) {
-        if (aux->data.name == pokemonName) 
+        if (funcComp(aux->data, pokemon) == 0) 
             return aux;
         aux = aux->next;
     }
@@ -154,16 +159,45 @@ void createPokemon(list &lst, Pokemon pokemon) {
     
     aux = getNodeByID(lst, pokemon.ID);
     if (aux != NULL) {
-        cout << "Pokemon já adcionado na sua Pokedex" << "\n";
+        cout << "Erro! Pokemon já registrado na sua Pokedex com esse ID: " << pokemon.ID << "\n";
         return;
     }
 
-    aux = getNodeByName(lst, pokemon.name);
+    aux = getNodeByName(lst, pokemon, comparePokemonName);
     if (aux != NULL) {
-        cout << "Pokemon já adcionado na sua Pokedex" << "\n";
+        cout << "Erro! Pokemon já registrado na sua Pokedex com esse nome: " << pokemon.name << "\n";
         return;
     }
 
     append(lst, pokemon);
     cout << "Pokemon registrado com sucesso" << "\n";
+}
+
+void updatePokemonData(list &lst, int ID) {
+    node *pokemonSaveInDatabase = getNodeByID(lst, ID);
+    node *aux;
+    if (pokemonSaveInDatabase == NULL) {
+        cout << "Erro! Pokemon não existente em sua pokedex" << "\n";
+        return;
+    }
+    Pokemon pokemon = readNewPokemon();   
+    
+    aux = getNodeByID(lst, pokemon.ID);
+    if (aux != NULL && (aux->data.ID != pokemonSaveInDatabase->data.ID)) {
+        cout << "Erro! Pokemon já cadastrado na sua pokedex com esse ID: " << pokemon.ID << "\n";
+        return;
+    }
+
+    aux = getNodeByName(lst, pokemon, comparePokemonName);
+    if (aux != NULL && (aux->data.name != pokemonSaveInDatabase->data.name)) {
+        cout << "Erro! Pokemon já cadastrado na sua pokedex com esse nome: " << pokemon.name << "\n";
+        return;
+    }
+
+    pokemonSaveInDatabase->data.ID = pokemon.ID;
+    pokemonSaveInDatabase->data.name = pokemon.name;
+    pokemonSaveInDatabase->data.type = pokemon.type;
+    pokemonSaveInDatabase->data.gen = pokemon.gen;
+
+    cout << "Dados do pokemon alterados com sucesso!" << "\n";
 }

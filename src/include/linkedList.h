@@ -21,6 +21,8 @@ bool isEmpty(list &lst);
 void append(list &lst, Pokemon data);
 void createPokemon(list &lst, Pokemon pokemon);
 void cleanList(list &lst);
-void showList(list &lst, void(*funcPrint)(Pokemon));
+void displayList(list &lst, void(*funcPrint)(Pokemon), bool showPosition = false);
 void quickSort(list &lst, int begin, int end, int (*funcComp)(Pokemon, Pokemon));
+void remove(list &lst, uint32 position);
+void updatePokemonData(list &lst, int ID);
 #endif

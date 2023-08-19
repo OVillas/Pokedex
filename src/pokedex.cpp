@@ -6,37 +6,55 @@
 
 
 const std::string FILE_NAME = "data/pokemonData.csv";
+char option;
+int positionToRemoveOrChange;
 
 int main(int argc, char **argv) { 
     list pokemons;
     readPokemonsCSV(FILE_NAME, pokemons);
-    char option;
     bool run = true;
 
     while (run) {
         system("clear");
-        showPokemonTitle();
+        Pokemon newPokemon;
+        showPokemonTitle(true);
         std::cout << "> ";
         std::cin >> option;
+        quickSort(pokemons, 0, pokemons.count - 1, comparePokemonID);
         switch (option) {
-        case '1':
-            std::cout << "Adcionando novo pokemon na pokedex" << "\n";
+        case '1':    
+            system("clear");
+            showPokemonTitle();
+            newPokemon = readNewPokemon();
+            createPokemon(pokemons, newPokemon);
             exitToPokemonTitle();
             break;
         case '2':
-            std::cout << "Lendo  pokemon na pokedex" << "\n";
+            system("clear");
+            showPokemonTitle();
+            displayList(pokemons, printPokemon);
             exitToPokemonTitle();
             break;
         case '3':
-            std::cout << "atualizando pokemon na pokedex" << "\n";
+            system("clear");
+            showPokemonTitle();
+            std::cout << "Digite a posição do pokemon que você deseja atualizar" << "\n";
+            readInterger(positionToRemoveOrChange);
+            updatePokemonData(pokemons, positionToRemoveOrChange);
             exitToPokemonTitle();
             break;
         case '4':
-            std::cout << " Deletando pokemon na pokedex" << "\n";
+            system("clear");
+            showPokemonTitle();
+            std::cout << "Digite a posição do pokemon que você deseja remover" << "\n";
+            readInterger(positionToRemoveOrChange);
+            remove(pokemons, positionToRemoveOrChange);
             exitToPokemonTitle();
             break;
         case 'q':
-           run = false; 
+            system("clear");
+            showPokemonTitle();
+            run = false; 
            break;
         default:
             std::cout << "Opção inválida" << "\n";
@@ -44,6 +62,8 @@ int main(int argc, char **argv) {
         }    
     }
     
+    writePokemonCSV(FILE_NAME, pokemons);
+    cleanList(pokemons);
     std::cout << "Fim do programa" << "\n";
     return 0;
 }
