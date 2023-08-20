@@ -43,12 +43,12 @@ uma chamada recursiva empilhando o processo dependendo da necessidade (Esquerda 
 
 **QUICKSORT COMPLEXIDADE DE TEMPO MÉDIA => O(n log(n))**
 
-### Exemplo com um vetor
+### - Exemplo com um vetor de números inteiros
 ![](https://github.com/Villlas/Pokedex/blob/main/img/EXEMPLO%20QUICKSORT.png) 
 
 
 
-# TUTORIAL 
+# TUTORIAL PARA EXECUTAR
     1 - linux:
         1.1 - instale o gcc com: 
             $ sudo apt update -y
