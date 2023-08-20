@@ -44,7 +44,7 @@ uma chamada recursiva empilhando o processo dependendo da necessidade (Esquerda 
 **QUICKSORT COMPLEXIDADE DE TEMPO MÉDIA => O(n log(n))**
 
 ### Exemplo com um vetor
-![]() 
+![](https://github.com/Villlas/Pokedex/blob/main/img/EXEMPLO%20QUICKSORT.png) 
 
 
 
