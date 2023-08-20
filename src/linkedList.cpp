@@ -60,24 +60,6 @@ node *getNodeByPosition(list &lst, uint32 position) {
 }
 
 //PRIVADA Função auxiliar para a inserção de um novo pokemon
-node *getNodeByName(list &lst, Pokemon pokemon, int (*funcComp)(Pokemon, Pokemon)) { 
-    if (isEmpty(lst)) {
-        cout << "Nenhum monstro visto ou capturado ainda" << "\n";
-        return NULL;
-    }
-    Pokemon temp;
-    
-    node *aux = lst.head;
-    for (int i = 0; i < lst.count; i++) {
-        if (funcComp(aux->data, pokemon) == 0) 
-            return aux;
-        aux = aux->next;
-    }
-
-    return NULL;
-}
-
-//PRIVADA Função auxiliar para a inserção de um novo pokemon
 node *getNodeByID(list &lst, int pokemonID) { 
     if (isEmpty(lst)) {
         cout << "Nenhum monstro visto ou capturado ainda" << "\n";
@@ -155,17 +137,19 @@ void quickSort(list &lst, int begin, int end, int (*funcComp)(Pokemon, Pokemon))
 }
 
 void createPokemon(list &lst, Pokemon pokemon) {
-    node *aux;
-    
-    aux = getNodeByID(lst, pokemon.ID);
-    if (aux != NULL) {
-        cout << "Erro! Pokemon já registrado na sua Pokedex com esse ID: " << pokemon.ID << "\n";
+    Pokemon err;
+
+    quickSort(lst, 0, lst.count - 1, comparePokemonID);
+    err = binarySearch(lst, pokemon, 0, lst.count - 1, comparePokemonID);
+    if (err.name != "NULL") {
+        cout << "Pokemon já registrado na pokedex com esse ID: " << pokemon.ID << "\n";
         return;
     }
-
-    aux = getNodeByName(lst, pokemon, comparePokemonName);
-    if (aux != NULL) {
-        cout << "Erro! Pokemon já registrado na sua Pokedex com esse nome: " << pokemon.name << "\n";
+    
+    quickSort(lst, 0, lst.count - 1, comparePokemonName);
+    err = binarySearch(lst, pokemon, 0, lst.count - 1, comparePokemonName);
+    if (err.name != "NULL") {
+        cout << "Pokemon já registrado na pokedex com esse nome: " << pokemon.name << "\n";
         return;
     }
 
@@ -182,15 +166,18 @@ void updatePokemonData(list &lst, int ID) {
     }
     Pokemon pokemon = readNewPokemon();   
     
-    aux = getNodeByID(lst, pokemon.ID);
-    if (aux != NULL && (aux->data.ID != pokemonSaveInDatabase->data.ID)) {
-        cout << "Erro! Pokemon já cadastrado na sua pokedex com esse ID: " << pokemon.ID << "\n";
+    Pokemon err;
+    quickSort(lst, 0, lst.count - 1, comparePokemonID);
+    err = binarySearch(lst, pokemon, 0, lst.count - 1, comparePokemonID);
+    if (err.name != "NULL") {
+        cout << "Pokemon já registrado na pokedex com esse ID: " << pokemon.ID << "\n";
         return;
     }
-
-    aux = getNodeByName(lst, pokemon, comparePokemonName);
-    if (aux != NULL && (aux->data.name != pokemonSaveInDatabase->data.name)) {
-        cout << "Erro! Pokemon já cadastrado na sua pokedex com esse nome: " << pokemon.name << "\n";
+    
+    quickSort(lst, 0, lst.count - 1, comparePokemonName);
+    err = binarySearch(lst, pokemon, 0, lst.count - 1, comparePokemonName);
+    if (err.name != "NULL") {
+        cout << "Pokemon já registrado na pokedex com esse nome: " << pokemon.name << "\n";
         return;
     }
 
@@ -200,4 +187,23 @@ void updatePokemonData(list &lst, int ID) {
     pokemonSaveInDatabase->data.gen = pokemon.gen;
 
     cout << "Dados do pokemon alterados com sucesso!" << "\n";
+}
+
+Pokemon binarySearch(list &lst, Pokemon valueSearch, int begin, int end, int (*funcComp)(Pokemon, Pokemon)) {
+    if (end < begin) {
+        Pokemon notFound;
+        notFound.name = "NULL";
+        return notFound;
+    }
+    int mid = (begin + end) / 2;
+    Pokemon midPokemon = getNodeByPosition(lst, mid)->data;
+    int compResult = funcComp(midPokemon, valueSearch);
+
+    if (compResult == 0)
+        return midPokemon;
+    
+    if (compResult < 0)
+        return binarySearch(lst, valueSearch, mid + 1, end, funcComp);
+    
+    return binarySearch(lst, valueSearch, begin, mid - 1, funcComp);
 }

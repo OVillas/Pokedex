@@ -68,8 +68,9 @@ void showPokemonTitle(bool showMenu) {
     if (showMenu) {
         std::cout << "\n[ 1 ] Criar Pokemon" << "\n";
         std::cout << "[ 2 ] Mostrar Pokemons vistos" << "\n";
-        std::cout << "[ 3 ] Atualizar dados de pokemons vistos" << "\n";
-        std::cout << "[ 4 ] Deletar pokemon " << "\n";
+        std::cout << "[ 3 ] Pesquisar por nome do pokemon" << "\n";
+        std::cout << "[ 4 ] Atualizar dados de pokemons vistos" << "\n";
+        std::cout << "[ 5 ] Deletar pokemon " << "\n";
         std::cout << "[ q ] Sair da pokedex " << "\n";
     }
     

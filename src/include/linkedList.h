@@ -25,4 +25,5 @@ void displayList(list &lst, void(*funcPrint)(Pokemon), bool showPosition = false
 void quickSort(list &lst, int begin, int end, int (*funcComp)(Pokemon, Pokemon));
 void remove(list &lst, uint32 position);
 void updatePokemonData(list &lst, int ID);
+Pokemon binarySearch(list &lst, Pokemon valueSearch, int begin, int end, int (*funcComp)(Pokemon, Pokemon));
 #endif
