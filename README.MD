@@ -41,7 +41,7 @@ arquivo .CSV em companhia de uma lista duplamente encadeada.
     os maiores. Após isso, verifica-se se há elementos para ordenar a esquerda e a direita do **PIVÔ** e se houver, é feita
     uma chamada recursiva empilhando o processo dependendo da necessidade (Esquerda ou direita);
 
-    QUICKSORT COMPLEXIDADE DE TEMPO => O(n log(n));
+    **QUICKSORT COMPLEXIDADE DE TEMPO MÉDIA => O(n log(n));**
 
 
 
