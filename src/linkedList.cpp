@@ -96,6 +96,7 @@ void remove(list &lst, uint32 position) {
 
     delete aux;
     lst.count--;
+    cout << "Pokemon deletado com sucesso" << "\n";
 }
 
 //PRIVADA
