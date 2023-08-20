@@ -44,5 +44,5 @@ arquivo .CSV em companhia de uma lista duplamente encadeada.
         1.3 - Execute o seguinte comando para compilar o aquivo
             $ make
         1.4 - Para executar o programa escreva o seguinte comando:
-            $ ./pokedex
+            $ make run
         

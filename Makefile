@@ -17,3 +17,6 @@ $(EXEC): $(OBJ)
 
 clean:
 	rm -f $(BINDIR)/*.o $(EXEC)
+
+run:
+	./pokedex
