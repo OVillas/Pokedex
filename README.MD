@@ -43,9 +43,7 @@ arquivo .CSV em companhia de uma lista duplamente encadeada.
 ### Comparação do tempo de complexidade com outros algoritmos de ordenação
 
 |  **ALGORITMO**   |    **TEMPO DE COMPLEXIDADE**    |
-|------------------|---------------------------------|
-|      -*=*-       | **MELHOR** | **MÉDIA** |**PIOR**|     
-|------------------|------------|-----------|--------|
+|------------------|---------------------------------|    
 |    QUICKSORT     |O(nlog(n))  | O(nlog(n))| O(n^2) | => O(n)               
 |    BUBBLESORT    | O(n)       | O(n^2)    | O(n^2) | => O(1)
 |    INSERTIONSORT | O(n)       | O(n^2)    | O(n^2) | => O(1)
