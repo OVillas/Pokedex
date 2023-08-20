@@ -1,6 +1,6 @@
 # Trabalho Sistema cadastral (POKEDEX) com listas encadeadas
 Repositório para o trabalho 1 da Disciplinas de Estrutura de Dados 1 FCEE - UERJ 2023.1
-Ministrado pelo Professor Dennis Cou
+Ministrado pelo Professor Denis Couple
 
 Informações do Sistema Operacional em que o programa foi testado:
 * Distributor ID:	Pop
