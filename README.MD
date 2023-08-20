@@ -35,13 +35,13 @@ arquivo .CSV em companhia de uma lista duplamente encadeada.
 ![](https://github.com/Villlas/Pokedex/blob/main/img/print_menu.png) 
 
 ## Algoritmo de ordenação principal (quick sort)
-    Resolvemos utilizar devido a sua alta performace em ordenação por comparação, se tornado o mais eficiente em média. Nele
-    se escolhe um elemento de denominamos como **PIVÔ**, que no caso do nosso trabalho será escolhido o elemento central, 
-    e partir dele particionamos a lista para que todo os elementos à esquerda do **PIVÔ** sejam os menores e o direita sejam
-    os maiores. Após isso, verifica-se se há elementos para ordenar a esquerda e a direita do **PIVÔ** e se houver, é feita
-    uma chamada recursiva empilhando o processo dependendo da necessidade (Esquerda ou direita);
+Resolvemos utilizar devido a sua alta performace em ordenação por comparação, se tornado o mais eficiente em média. Nele
+se escolhe um elemento de denominamos como **PIVÔ**, que no caso do nosso trabalho será escolhido o elemento central, 
+e partir dele particionamos a lista para que todo os elementos à esquerda do **PIVÔ** sejam os menores e o direita sejam
+os maiores. Após isso, verifica-se se há elementos para ordenar a esquerda e a direita do **PIVÔ** e se houver, é feita
+uma chamada recursiva empilhando o processo dependendo da necessidade (Esquerda ou direita);
 
-    **QUICKSORT COMPLEXIDADE DE TEMPO MÉDIA => O(n log(n));**
+**QUICKSORT COMPLEXIDADE DE TEMPO MÉDIA => O(n log(n))**
 
 
 
