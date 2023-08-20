@@ -42,11 +42,13 @@ arquivo .CSV em companhia de uma lista duplamente encadeada.
     uma chamada recursiva empilhando o processo dependendo da necessidade (Esquerda ou direita);
 ### Comparação do tempo de complexidade com outros algoritmos de ordenação
 
+MELHOR -> MÉDIA -> PIOR
+
 |  **ALGORITMO**   |    **TEMPO DE COMPLEXIDADE**    |
 |------------------|---------------------------------|    
-|    QUICKSORT     |O(nlog(n))  | O(nlog(n))| O(n^2) | => O(n)               
-|    BUBBLESORT    | O(n)       | O(n^2)    | O(n^2) | => O(1)
-|    INSERTIONSORT | O(n)       | O(n^2)    | O(n^2) | => O(1)
+|    QUICKSORT     |O(nlog(n))  O(nlog(n)) O(n^2)    | => O(n)               
+|    BUBBLESORT    |O(n)       O(n^2)     O(n^2)     | => O(1)
+|    INSERTIONSORT |O(n)       O(n^2)     O(n^2)     | => O(1)
 
 
 # TUTORIAL 
