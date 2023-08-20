@@ -40,15 +40,10 @@ arquivo .CSV em companhia de uma lista duplamente encadeada.
     e partir dele particionamos a lista para que todo os elementos à esquerda do **PIVÔ** sejam os menores e o direita sejam
     os maiores. Após isso, verifica-se se há elementos para ordenar a esquerda e a direita do **PIVÔ** e se houver, é feita
     uma chamada recursiva empilhando o processo dependendo da necessidade (Esquerda ou direita);
-### Comparação do tempo de complexidade com outros algoritmos de ordenação
 
-MELHOR -> MÉDIA -> PIOR
+    QUICKSORT COMPLEXIDADE DE TEMPO => O(n log(n));
 
-|  **ALGORITMO**   |    **TEMPO DE COMPLEXIDADE**    |
-|------------------|---------------------------------|    
-|    QUICKSORT     |O(nlog(n))  O(nlog(n)) O(n^2)    | => O(n)               
-|    BUBBLESORT    |O(n)       O(n^2)     O(n^2)     | => O(1)
-|    INSERTIONSORT |O(n)       O(n^2)     O(n^2)     | => O(1)
+
 
 
 # TUTORIAL 
