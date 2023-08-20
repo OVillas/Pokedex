@@ -1,15 +1,22 @@
-# Projeto de uma POKEDEX com a matéria de Estrutura de Dados 1
+# Trabalho Sistema cadastral (POKEDEX) com listas encadeadas
+Repositório para o trabalho 1 da Disciplinas de Estrutura de Dados 1 FCEE - UERJ 2023.1
+Ministrado pelo Professor Dennis Cou
 
-**Ainda em desenvolvimento**
-
-Desenvolvido por Gabriel Villarinho
-
-100% construido na linguagem c++
+Informações do Sistema Operacional em que o programa foi testado:
+* Distributor ID:	Pop
+* Description:	Pop!_OS 22.04 LTS
+* Release:	22.04
+* Codename:	jammy
 
 # Resumo
 Esse projeto tem como objetivo, além de aprendizado, fazer um sistemas de CRUD simples em um 
-arquivo .CSV em uma lista duplamente encadeada.
+arquivo .CSV em companhia de uma lista duplamente encadeada.
 
+|  **Membros da Dupla**  |
+|------------------------|
+| Gabriel Villarinho     |
+| Marcelo Bromonschenkel |
+|                        |
 
 # Utilidades:
     1 - Utilização de lista duplamente encadeadas ;
