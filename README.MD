@@ -43,6 +43,8 @@ uma chamada recursiva empilhando o processo dependendo da necessidade (Esquerda 
 
 **QUICKSORT COMPLEXIDADE DE TEMPO MÉDIA => O(n log(n))**
 
+### Exemplo com um vetor
+![]() 
 
 
 
