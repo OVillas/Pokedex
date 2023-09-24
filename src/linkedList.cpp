@@ -184,8 +184,8 @@ void updatePokemonData(list &lst, int ID) {
         return;
     }
 
-    pokemonSaveInDatabase->data.ID = pokemon.ID;
     quickSort(lst, 0, lst.size - 1, comparePokemonID);
+    pokemonSaveInDatabase->data.ID = pokemon.ID;
     pokemonSaveInDatabase->data.name = pokemon.name;
     pokemonSaveInDatabase->data.type = pokemon.type;
     pokemonSaveInDatabase->data.gen = pokemon.gen;
