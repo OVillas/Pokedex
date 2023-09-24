@@ -14,7 +14,7 @@ struct node {
 struct list {
     node *head = nullptr;
     node *tail = nullptr;
-    int count = 0;
+    int size = 0;
 };
 
 bool isEmpty(list &lst);

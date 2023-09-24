@@ -6,7 +6,7 @@
 using namespace std;
 
 bool isEmpty(list &lst) {
-    return lst.count == 0;
+    return lst.size == 0;
 }
 
 void append(list &lst, Pokemon data) {
@@ -15,22 +15,22 @@ void append(list &lst, Pokemon data) {
 
     if (isEmpty(lst)) {
         lst.head = lst.tail = newNode;
-        lst.count++;
+        lst.size++;
         return;
     }
 
     newNode->prev = lst.tail;
     lst.tail->next = newNode;
     lst.tail = newNode;
-    lst.count++; 
+    lst.size++; 
 }
 
 void cleanList(list &lst) {
-    while (lst.count > 0) {
+    while (lst.size > 0) {
         node *aux = lst.tail;
         lst.tail = lst.tail->prev;
         delete aux;
-        lst.count--;
+        lst.size--;
     }
     lst.head = lst.tail = nullptr;
     cout << "Lista limpa com sucesso" << "\n";
@@ -47,8 +47,8 @@ void displayList(list &lst, void(funcPrint)(Pokemon), bool showPosition) {
 }
 
 // PRIVADA Função auxiliar para o algoritmo de ordenação quickSort
-node *getNodeByPosition(list &lst, uint32 position) { 
-    if (isEmpty(lst) || position > lst.count - 1) {
+node *getNodeByPosition(list &lst, int position) { 
+    if (isEmpty(lst) || position > lst.size - 1) {
         cout << "Nenhum monstro visto ou capturado ainda" << "\n";
         return NULL;
     }
@@ -66,7 +66,7 @@ node *getNodeByID(list &lst, int pokemonID) {
         return NULL;
     }
     node *aux = lst.head;
-    for (int i = 0; i < lst.count; i++) {
+    for (int i = 0; i < lst.size; i++) {
         if (aux->data.ID == pokemonID) 
             return aux;
         aux = aux->next;
@@ -76,7 +76,7 @@ node *getNodeByID(list &lst, int pokemonID) {
 }
 
 void remove(list &lst, uint32 position) {
-    if (isEmpty(lst) || position > lst.count) {
+    if (isEmpty(lst) || position > lst.size) {
         cout << "Nenhum monstro visto ou capturado ainda para remover" << "\n";
         return;
     }
@@ -95,7 +95,7 @@ void remove(list &lst, uint32 position) {
     }
 
     delete aux;
-    lst.count--;
+    lst.size--;
     cout << "Pokemon deletado com sucesso" << "\n";
 }
 
@@ -140,15 +140,15 @@ void quickSort(list &lst, int begin, int end, int (*funcComp)(Pokemon, Pokemon))
 void createPokemon(list &lst, Pokemon pokemon) {
     Pokemon err;
 
-    quickSort(lst, 0, lst.count - 1, comparePokemonID);
-    err = binarySearch(lst, pokemon, 0, lst.count - 1, comparePokemonID);
+    quickSort(lst, 0, lst.size - 1, comparePokemonID);
+    err = binarySearch(lst, pokemon, 0, lst.size - 1, comparePokemonID);
     if (err.name != "NULL") {
         cout << "Pokemon já registrado na pokedex com esse ID: " << pokemon.ID << "\n";
         return;
     }
     
-    quickSort(lst, 0, lst.count - 1, comparePokemonName);
-    err = binarySearch(lst, pokemon, 0, lst.count - 1, comparePokemonName);
+    quickSort(lst, 0, lst.size - 1, comparePokemonName);
+    err = binarySearch(lst, pokemon, 0, lst.size - 1, comparePokemonName);
     if (err.name != "NULL") {
         cout << "Pokemon já registrado na pokedex com esse nome: " << pokemon.name << "\n";
         return;
@@ -165,24 +165,27 @@ void updatePokemonData(list &lst, int ID) {
         cout << "Erro! Pokemon não existente em sua pokedex" << "\n";
         return;
     }
+    printPokemon(pokemonSaveInDatabase->data);
+
     Pokemon pokemon = readNewPokemon();   
     
     Pokemon err;
-    quickSort(lst, 0, lst.count - 1, comparePokemonID);
-    err = binarySearch(lst, pokemon, 0, lst.count - 1, comparePokemonID);
-    if (err.name != "NULL") {
+    quickSort(lst, 0, lst.size - 1, comparePokemonID);
+    err = binarySearch(lst, pokemon, 0, lst.size - 1, comparePokemonID);
+    if (err.name != "NULL" && err.ID != ID) {
         cout << "Pokemon já registrado na pokedex com esse ID: " << pokemon.ID << "\n";
         return;
     }
     
-    quickSort(lst, 0, lst.count - 1, comparePokemonName);
-    err = binarySearch(lst, pokemon, 0, lst.count - 1, comparePokemonName);
+    quickSort(lst, 0, lst.size - 1, comparePokemonName);
+    err = binarySearch(lst, pokemon, 0, lst.size - 1, comparePokemonName);
     if (err.name != "NULL") {
         cout << "Pokemon já registrado na pokedex com esse nome: " << pokemon.name << "\n";
         return;
     }
 
     pokemonSaveInDatabase->data.ID = pokemon.ID;
+    quickSort(lst, 0, lst.size - 1, comparePokemonID);
     pokemonSaveInDatabase->data.name = pokemon.name;
     pokemonSaveInDatabase->data.type = pokemon.type;
     pokemonSaveInDatabase->data.gen = pokemon.gen;

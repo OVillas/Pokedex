@@ -46,7 +46,7 @@ void writePokemonCSV(string filename, list &lst) {
     }
 
     node *aux = lst.head;
-    for (int i = 0; i < lst.count; i++) {
+    for (int i = 0; i < lst.size; i++) {
         string line = splitPokemon(aux->data);
         fileDatas << line << "\n";
         aux = aux->next;

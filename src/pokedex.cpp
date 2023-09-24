@@ -29,7 +29,7 @@ int main(int argc, char **argv) {
         showPokemonTitle(true);
         std::cout << "> ";
         std::cin >> option;
-        quickSort(pokemons, 0, pokemons.count - 1, comparePokemonID);
+        quickSort(pokemons, 0, pokemons.size - 1, comparePokemonID);
         switch (option) {
         case '1': 
             //Cadastrar novo pokemon   
@@ -52,8 +52,8 @@ int main(int argc, char **argv) {
             showPokemonTitle();
             std::cout << "Digite o nome do pokemons que deseja procurar\n> ";
             std::cin >> PokemonAUX.name;
-            quickSort(pokemons, 0, pokemons.count - 1, comparePokemonName); //Para a pesquisa funcionar, e necessário que o objeto esteja ordenado
-            PokemonAUX =  binarySearch(pokemons, PokemonAUX, 0, pokemons.count - 1, comparePokemonName);
+            quickSort(pokemons, 0, pokemons.size - 1, comparePokemonName); //Para a pesquisa funcionar, e necessário que o objeto esteja ordenado
+            PokemonAUX =  binarySearch(pokemons, PokemonAUX, 0, pokemons.size - 1, comparePokemonName);
             if (PokemonAUX.name == "NULL") {
                 std::cout << "Pokemon não encontrado!!" << "\n";
             } else {
@@ -77,7 +77,7 @@ int main(int argc, char **argv) {
             showPokemonTitle();
             std::cout << "Digite a posição do pokemon que você deseja remover" << "\n";
             readInterger(positionToRemoveOrChange);
-            remove(pokemons, positionToRemoveOrChange);
+            remove(pokemons, positionToRemoveOrChange-1);
             exitToPokemonTitle();
             break;
         case 'q':
